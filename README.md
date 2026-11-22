@@ -1,56 +1,44 @@
-# Welcome to your Expo app 👋
+# Control
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+App para el celular que lleva en un solo lugar lo que gasto y lo que como en la semana: cuánto llevo del presupuesto y cuántas calorías van del día.
 
-## Get started
+**Estado: en desarrollo.** Ya está la base: las cuatro pestañas, los tipos de datos y el guardado en el celular. Las pantallas se van llenando por pasos.
 
-1. Install dependencies
+**Expo SDK 58 · React Native · Expo Router · TypeScript · AsyncStorage**
 
-   ```bash
-   npm install
-   ```
+## Cómo va a funcionar
 
-2. Start the app
+| Pestaña | Qué tiene |
+|---|---|
+| **Gastos** | Lo que gasto, por categoría: mercado, transporte, universidad, salidas y otros |
+| **Comidas** | Desayuno, almuerzo, cena y snacks, con calorías y costo |
+| **Semana** | Resumen de la semana contra el presupuesto y la meta de calorías |
+| **Ajustes** | Presupuesto semanal (por defecto $300.000) y meta diaria de calorías |
 
-   ```bash
-   npx expo start
-   ```
+Todo se guarda en el celular, sin cuenta ni internet.
 
-In the output, you'll find options to open the app in a
+## Avance
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- [x] Proyecto base con Expo Router y TypeScript, sin las pantallas de ejemplo de la plantilla
+- [x] Barra de cuatro pestañas
+- [x] Tipos de datos, fechas en hora local y formato de pesos colombianos
+- [x] Guardado con AsyncStorage y manejo de errores de almacenamiento
+- [ ] Formularios para agregar gastos y comidas
+- [ ] Resumen semanal
+- [ ] Pantalla de ajustes
 
-You can start developing by editing the files inside the **src/app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Cómo está hecho
 
-## Get a fresh project
+- `src/app/` — las pantallas; cada archivo es una ruta de Expo Router
+- `src/datos/DatosContext.tsx` — todo el estado de la app y su guardado, en un contexto de React
+- `src/tipos.ts` — la forma de cada dato; si cambia algo aquí, TypeScript señala qué más hay que actualizar
+- `src/utils/` — fechas como texto `AAAA-MM-DD` en hora local y formato de pesos
 
-When you're ready, run:
+## Correrlo
 
 ```bash
-npm run reset-project
+npm install
+npx expo start
 ```
 
-This command will move the starter code to the **example** directory and create a blank **src/app** directory where you can start developing.
-
-### Other setup steps
-
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Escanea el código QR con Expo Go en el celular, o presiona `w` para abrirla en el navegador.
